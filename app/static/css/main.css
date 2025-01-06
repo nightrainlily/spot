@@ -28,6 +28,28 @@ body {
     position: relative;
 }
 
+.about {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 3% 11%;
+}
+
+@media only screen and (max-width: 500px) {
+    .about {
+        position: relative;
+        text-align: center;
+        margin: auto;
+    }
+}
+
+.about-page {
+    margin: 5% 11% auto 11%;
+}
+.about-page p {
+    margin: 5px 0px;
+}
+
 .playlist-page-container {
     position:relative;
     width:100%;
@@ -54,7 +76,32 @@ body {
     margin-right: 11%;
     max-width: 100%;
     padding: 20px;
-    position: absolute;
+    /* position: absolute; */
+}
+
+.features-graph {
+    margin: 0 10% 0 10%;
+}
+
+@media only screen and (max-width: 1000px) {
+    .features-graph img{
+      max-width: 100%;
+    }
+  }
+
+@media only screen and (max-width: 1000px) {
+    .playlist-page-playlists-container {
+      margin:auto;
+    }
+  }
+
+.graph-captions {
+    position: relative;
+    pointer-events: auto;
+    margin: 0 15% 10% 15%;
+    font-size: 12px;
+    font-style: italic;
+    color: gray;
 }
 
 .playlist-page-playlists-container h2 {

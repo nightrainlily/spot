@@ -7,11 +7,15 @@
 {% block body %}
 <div class="header">
     <div class="logo"></div>
+    <div class="about">
+        <p><a href="{{ url_for('about') }}">about</a></p>
+    </div>
 </div>
 <div class="playlists-container">
     {% for playlist in playlists %}
         <div class="playlist">
-            <a href="{{ url_for('playlist_details', playlist_id=playlist.playlist_id) }}"><img src="{{ playlist.image }}" alt="{{ playlist.name }}"></a>
+            <a id="playlist-link" data-playlist-id="{{ playlist.playlist_id }}" href="#">
+                <img src="{{ playlist.image }}" alt="{{ playlist.name }}"></a>
             <p>{{ playlist.name }}</p>
         </div>
     {% endfor %}

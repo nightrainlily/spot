@@ -14,5 +14,20 @@
 </header>
 <body>
     {% block body %}{% endblock %}
+    {% block scripts %}
+    <script>
+        const width = window.innerWidth;
+    
+        document.body.addEventListener('click', (event) => {
+            const link = event.target.closest('[id="playlist-link"]');
+            if (link) {
+                event.preventDefault();
+                const playlistId = link.dataset.playlistId;
+                const href = `/playlist/${playlistId}?width=${width}`;
+                window.location.href = href;
+            }
+        });
+    </script>
+    {% endblock %}
 </body>
 </html>

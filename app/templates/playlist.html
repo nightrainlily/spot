@@ -2,6 +2,8 @@
 
 {% block head %}
 <title>{{ playlist.name }}</title>
+<script defer src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -39,17 +41,37 @@
     </div>
 </div>
 <div>
-    
     <div class="playlist-page-playlists-container">
         <h2 class="rec-title">more like {{ playlist.name }}</h2>
         {% for playlist in model_playlists %}
             <div class="playlist">
-                <a href="{{ url_for('playlist_details', playlist_id=playlist.playlist_id) }}">
+                <a id="playlist-link" data-playlist-id="{{ playlist.playlist_id }}" href="#">
                     <img src="{{ playlist.image }}" alt="{{ playlist.name }}">
                 </a>
                 <p>{{ playlist.name }}</p>
             </div>
         {% endfor %}
     </div>
+</div>
+<div id="graph-div">
+    {% if viewport >= 768 %}
+        {% for graph in graphs %}
+        <div class="features-graph">
+            {{ graph|safe }}
+        </div>
+        {% endfor %}
+    {% else %}
+        {% for graph in graphs %}
+        <div class="features-graph">
+            <img src="data:image/jpg;base64,{{ graph }}">
+        </div>
+        {% endfor %}
+    {% endif %}
+    <p class="graph-captions">for interactive graphs, use desktop. base genre graph via <a href="https://everynoise.com/">everynoise.com</a></p>
+    <!-- {# {% for graph in graphs %}
+    <div class="features-graph">
+        {{ graph[0]|safe }}
+    </div>
+    {% endfor %} #} -->
 </div>
 {% endblock %}
